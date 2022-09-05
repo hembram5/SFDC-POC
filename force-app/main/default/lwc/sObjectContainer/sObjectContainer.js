@@ -15,7 +15,7 @@ export default class SObjectContainer extends LightningElement {
     connectedCallback() {
         getSObjectList()
         .then(result => {
-            console.log('Data Check ==> '+JSON.stringify(result));
+            console.log('Data Check testes ==> '+JSON.stringify(result));
         })
         .catch(error => {
 
