@@ -1,9 +1,14 @@
 <template>
-    <lightning-combobox
+    <template if:true={objectMap}>
+        <lightning-combobox
             label="Select Object"
             placeholder="Select Object"
             value = {value}
             options={objectMap}
             onchange={handleSeletedObject}>
-    </lightning-combobox>
+        </lightning-combobox>
+    </template>
+    <template if:false={objectMap}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
 </template>

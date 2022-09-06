@@ -16,7 +16,8 @@ public with sharing class sObjectController {
             Schema.SObjectType objectType = globalDescribeMap.get(globalDescribeKey);
             Schema.DescribeSObjectResult objectResult = objectType.getDescribe();
             if(objectResult.isAccessible()) {
-                mapOfSObjects.put(objectResult.getName(), objectResult.getLabel());
+                String labelWithAPI = objectResult.getLabel()+' ('+objectResult.getName()+')';
+                mapOfSObjects.put(objectResult.getName(), labelWithAPI);
             }
         }
         return mapOfSObjects;
