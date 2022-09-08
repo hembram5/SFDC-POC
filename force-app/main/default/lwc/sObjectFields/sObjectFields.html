@@ -1,0 +1,10 @@
+<template>
+    <template if:true={objectMap}>
+        <lightning-checkbox-group
+            name={objectName}
+            label={objectName}
+            options={objectMap}
+            value={selectedValue}>
+        </lightning-checkbox-group>
+    </template>
+</template>

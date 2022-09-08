@@ -28,18 +28,19 @@ public with sharing class sObjectController {
      * @return: Map<String, String>
      */
     @AuraEnabled
-    public static Map<String, String> getFieldList(SObject objectName) {
+    public static Map<String, String> getFieldList(String objectName) {
         Map<String, String> mapOfFields = new Map<String, String>();
         
         if(objectName != null) {
-            Schema.SObjectType objectType = objectName.getSObjectType();
+            Schema.SObjectType objectType = Schema.getGlobalDescribe().get(objectName);
             Schema.DescribeSObjectResult objectResult = objectType.getDescribe();
             Map<String, Schema.SObjectField> objectFieldsMap = objectResult.fields.getMap();
             for(String fieldKey : objectFieldsMap.keySet()) {
                 Schema.SObjectField sObjectField = objectFieldsMap.get(fieldKey);
                 Schema.DescribeFieldResult sObjectFieldResult = sObjectField.getDescribe();
                 if(sObjectFieldResult.isAccessible() && sObjectFieldResult.isUpdateable()) {
-                    mapOfFields.put(sObjectFieldResult.getName(), sObjectFieldResult.getLabel());
+                    String labelWithAPI = sObjectFieldResult.getLabel()+' ('+sObjectFieldResult.getName()+')';
+                    mapOfFields.put(sObjectFieldResult.getName(), labelWithAPI);
                 }
             }
         }
