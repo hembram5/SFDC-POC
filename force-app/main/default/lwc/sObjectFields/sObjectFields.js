@@ -47,12 +47,7 @@ export default class SObjectFields extends LightningElement {
     handleMessage(message) {
         getFieldList({ objectName: message.objectAPI })
             .then( result => {
-                //console.log('Fields ==> '+JSON.stringify(result));
-                //console.log('Data result ==> '+result);
                 this.objectName = message.objectName;
-                console.log('Result ==> '+JSON.stringify(result));
-                console.log('Object Entries ==> '+Object.entries(result).map(([value, label]) => ({ value, label })));
-                console.log('JSON Object Entries ==> '+JSON.stringify(Object.entries(result).map(([value, label]) => ({ value, label }))));
                 this.objectMap = Object.entries(result).map(([value, label]) => ({ value, label }));
             })
             .catch(error => {

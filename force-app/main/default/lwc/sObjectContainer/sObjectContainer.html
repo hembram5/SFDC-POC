@@ -1,12 +1,17 @@
 <template>
     <template if:true={objectMap}>
-        <lightning-combobox
-            label="Select Object"
-            placeholder="Select Object"
-            value = {value}
-            options={objectMap}
-            onchange={handleSeletedObject}>
-        </lightning-combobox>
+        <lightning-card title="Select Object" icon-name="standard:orders">
+            <div class="slds-var-m-horizontal_medium">
+                <lightning-combobox
+                    label="Select Object"
+                    placeholder="Select Object"
+                    value = {value}
+                    options={objectMap}
+                    onchange={handleSeletedObject}
+                    variant="label-hidden">
+                </lightning-combobox>
+            </div>
+        </lightning-card>
     </template>
     <template if:false={objectMap}>
         <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
