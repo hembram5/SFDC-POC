@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>FieldSelected</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel to pass an field API</description>
+    <lightningMessageFields>
+        <fieldName>fieldAPI</fieldName>
+        <description>This is the field api that selected</description>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>fieldList</fieldName>
+        <description>This is the list of the field that need to be set</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

@@ -1,12 +1,28 @@
 <template>
-    <template if:true={objectMap}>
-        <div class="slds-card slds-var-p-around_x-small">
-            <lightning-checkbox-group
-                name={objectName}
-                label={objectName}
-                options={objectMap}
-                value={selectedValue}>
-            </lightning-checkbox-group>
+    <template if:true={displayFields}>
+        <div>
+            <lightning-input type="text" label="Enter Field Name" placeholder="Search field" variant="label-hidden" onchange={searchField}></lightning-input>
+        </div>
+        <div class="slds-card slds-var-p-around_x-small slds-scrollable" style="height:550px">
+            <template if:true={filteredData}>
+                <lightning-checkbox-group
+                    name={objectName}
+                    label={objectName}
+                    options={filteredList}
+                    value={selectedValue}
+                    onchange={handleSelect}>
+                </lightning-checkbox-group>
+            </template>
+            
+            <template if:false={filteredData}>
+                <lightning-checkbox-group
+                    name={objectName}
+                    label={objectName}
+                    options={objectMap}
+                    value={selectedValue}
+                    onchange={handleSelect}>
+                </lightning-checkbox-group>
+            </template>
         </div>
     </template>
 </template>
